@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+*.log
+.env*
+*.pem
+*.key
+*.p12
+*.pfx
+.npmrc
+.DS_Store
+Thumbs.db
+*.tsbuildinfo
+.vercel/
