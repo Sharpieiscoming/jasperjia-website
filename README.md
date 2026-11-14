@@ -1,5 +1,13 @@
 # Jasper Jia — Finance × AI Explorer
 
+## V1.0 页面框架
+
+六个独立入口：`/` 首页、`/about` 关于、`/projects` 项目、`/writing` 文章、`/ai-lab` 实验室、`/contact` 联系。
+
+项目详情位于 `/projects/[slug]`，文章详情位于 `/writing/[slug]`，均从 `app/content.ts` 的条目生成。无效 slug 返回 404。文章列表支持全部、金融、AI 和个人成长分类筛选。文章仍是未发布选题，详情是明确标注的占位模板。
+
+共用导航、页脚和语言状态在 `app/site-shell.tsx`；内部页面在 `app/site-pages.tsx`；新增内容请维护 `app/content.ts` 的中英文标题及摘要。每个页面支持双语切换，语言选择在跨页导航和刷新后保留。邮箱未提供，暂不生成邮件链接。AI Lab 不连接任何真实 AI API 或付费服务。
+
 Bilingual homepage for jasperjia.work. Built with Next.js App Router, React, TypeScript and Tailwind CSS. Currently for local preview; no website deployment or domain changes have been performed.
 
 ## Preview
@@ -17,7 +25,7 @@ Open http://localhost:3000. Production validation: `npm run build`. Start a buil
 
 Edit bilingual copy in `app/page.tsx` and visual styles in `app/globals.css`. Education is explicitly pending. Projects are concepts; writing entries are unpublished topic drafts. The AI Lab is a local task-card demo, not a connected AI model. The only biographical work claim comes from the supplied CITIC Securities internship information.
 
-Language selection persists locally. Navigation, project concept dialogs, mobile menu and Lab task selection work without external services. Reduced-motion preference is respected. Search indexing is disabled for this preview; review metadata before future publication.
+Language selection persists locally. Navigation, project detail pages, mobile menu and Lab task selection work without external services. Reduced-motion preference is respected. Search indexing is disabled for this preview; review metadata before future publication.
 
 Source repository: [Sharpieiscoming/jasperjia-website](https://github.com/Sharpieiscoming/jasperjia-website).
 
