@@ -37,3 +37,8 @@
 .profile .localNav{font-size:14px;line-height:1.7}
 .profile :global(.kicker){font-size:12px;line-height:1.8}
 @media(max-width:700px){.hero h1 .chineseName{font-size:clamp(44px,12vw,52px)}.hero h1 .englishName{font-size:28px}.hero .motto{font-size:20px}.profile :is(.prose p,.duties,.card p,.role,.intro),.profile :global(.body-copy){font-size:16.5px;line-height:1.95}.profile .localNav{font-size:13px;gap:16px 22px}.profile .date{font-size:14px}.profile .identity a{font-size:16px}.profile .timeline h3,.profile .card h3{font-size:20px}}
+
+/* Chinese motto only: preserve the existing position and English typography. */
+.hero .calligraphy{font-size:28px;line-height:1.85;letter-spacing:.12em;font-weight:400;font-style:normal;font-synthesis:none;color:#e8dfcf}
+:global(html[data-theme=light]) .hero .calligraphy{color:#302c28}
+@media(max-width:700px){.hero .calligraphy{font-size:22px;letter-spacing:.09em}}
