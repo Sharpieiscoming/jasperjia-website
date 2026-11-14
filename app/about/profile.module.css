@@ -2,3 +2,21 @@
 
 /* Homepage composition: preserve the original animated orbital component. */
 .hero{grid-template-columns:1.1fr 1fr;gap:24px;overflow:hidden;padding-top:50px;padding-bottom:50px}.hero>div{min-width:0}.hero .identity{border-left:0;border-top:1px solid #a899ef25;padding:20px 0 0;margin-top:26px;gap:12px;max-width:380px}.hero :global(.orbital){width:100%;min-width:0}.identity{scroll-margin-top:100px}@media(max-width:1000px) and (min-width:701px){.hero{gap:5px}.hero :global(.orbital){transform:scale(.72)}}@media(max-width:700px){.hero{grid-template-columns:1fr;gap:0;padding-top:40px;padding-bottom:15px}.hero :global(.orbital){margin:0;min-height:340px;transform:scale(.72)}.hero .identity{padding-top:18px}}
+
+/* Scoped light palette; dark declarations above remain unchanged. */
+:global(html[data-theme=light]) .profile .hero{background:var(--profile-hero)}
+:global(html[data-theme=light]) .hero h1 span{background:linear-gradient(100deg,#526fb0,#8552a4);background-clip:text;color:transparent}
+:global(html[data-theme=light]) .profile :is(.location,.date,.number){color:var(--profile-accent)}
+:global(html[data-theme=light]) .profile .identity{border-color:var(--profile-border)}
+:global(html[data-theme=light]) .identity a{color:var(--profile-accent)}
+:global(html[data-theme=light]) .identity a:hover{color:#4f346e}
+:global(html[data-theme=light]) .profile .localNav{color:var(--profile-accent);background:none}
+:global(html[data-theme=light]) .localNav a:hover{color:#4f346e}
+:global(html[data-theme=light]) .prose p{color:var(--profile-muted)}
+:global(html[data-theme=light]) .timeline>li{border-color:var(--profile-border)}
+:global(html[data-theme=light]) .timeline>li:before{background:#9274bb;box-shadow:0 0 16px #987bf426}
+:global(html[data-theme=light]) .profile :is(.role,.duties,.intro){color:var(--profile-muted)}
+:global(html[data-theme=light]) .profile .card{background:var(--profile-card);border-color:var(--profile-border)}
+:global(html[data-theme=light]) .card p{color:var(--profile-muted)}
+:global(html[data-theme=light]) .profile .pending{color:#856222}
+:global(html[data-theme=light]) .profile .unconfirmed{border-color:#d6c5a2;background:#fbf7ef}
