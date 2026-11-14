@@ -1,3 +1,2 @@
-import AboutProfile from './profile';
-export const metadata={title:'About | Jasper Jia'};
-export default function Page(){return <AboutProfile/>}
+import {permanentRedirect} from 'next/navigation';
+export default function Page(){permanentRedirect('/')}

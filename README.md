@@ -2,11 +2,13 @@
 
 ## V1.0 页面框架
 
-六个独立入口：`/` 首页、`/about` 关于、`/projects` 项目、`/writing` 文章、`/ai-lab` 实验室、`/contact` 联系。
+四个独立入口：`/` 关于（网站首页）、`/projects` 项目、`/writing` 文章、`/ai-lab` 实验室。原 `/about` 和 `/contact` 使用 308 永久重定向到 `/`，不再独立显示页面。联系方式在首页个人介绍下方，可通过 `/#connect` 访问。
+
+首页保留完整的 My Story、Education、Experience、Skills、Beyond Work 内容；首屏右侧通过 `app/finance-orbit.tsx` 复用原首页的 F × AI 轨道动画与全局 CSS 动画规则，移动端显示在个人信息下方。
 
 项目详情位于 `/projects/[slug]`，文章详情位于 `/writing/[slug]`，均从 `app/content.ts` 的条目生成。无效 slug 返回 404。文章列表支持全部、金融、AI 和个人成长分类筛选。文章仍是未发布选题，详情是明确标注的占位模板。
 
-共用导航、页脚和语言状态在 `app/site-shell.tsx`；内部页面在 `app/site-pages.tsx`；新增内容请维护 `app/content.ts` 的中英文标题及摘要。每个页面支持双语切换，语言选择在跨页导航和刷新后保留。邮箱未提供，暂不生成邮件链接。AI Lab 不连接任何真实 AI API 或付费服务。
+共用导航、页脚和语言状态在 `app/site-shell.tsx`；项目、文章、实验室页面在 `app/site-pages.tsx`；新增条目请维护 `app/content.ts`。首页的个人经历与双语内容位于 `app/about/profile.tsx` 和 `app/about/profile-data.ts`，局部样式在 `app/about/profile.module.css`。每个页面支持双语切换，语言选择在跨页导航和刷新后保留。AI Lab 不连接任何真实 AI API 或付费服务。
 
 Bilingual homepage for jasperjia.work. Built with Next.js App Router, React, TypeScript and Tailwind CSS. Currently for local preview; no website deployment or domain changes have been performed.
 
