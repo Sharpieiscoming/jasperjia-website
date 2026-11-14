@@ -20,3 +20,20 @@
 :global(html[data-theme=light]) .card p{color:var(--profile-muted)}
 :global(html[data-theme=light]) .profile .pending{color:#856222}
 :global(html[data-theme=light]) .profile .unconfirmed{border-color:#d6c5a2;background:#fbf7ef}
+
+/* About-only typography. Font outlines are handwritten, never artificially slanted. */
+.hero .names{display:flex;flex-direction:column;gap:8px;letter-spacing:0;font-weight:400;margin-bottom:24px;line-height:1.3}
+.hero h1 .chineseName{font-size:60px;font-weight:400;font-style:normal;font-synthesis:none;letter-spacing:3px;line-height:1.3;margin:0;background:none;color:#f0f0f7}
+.hero h1 .englishName{font-size:28px;line-height:1.4;letter-spacing:.4px;margin:0;font-weight:500}
+.names[data-language=en] .englishName{order:-1}
+:global(html[data-theme=light]) .hero h1 .chineseName{background:none;color:#242938}
+.hero .motto{font-size:20px;line-height:1.85;color:var(--muted);max-width:540px;margin:0}
+.profile .location{font-size:15px;line-height:1.8}
+.profile .identity a{font-size:16px;line-height:1.8}
+.profile :is(.prose p,.duties,.card p,.role,.intro),.profile :global(.body-copy){font-size:17.5px;line-height:1.95}
+.profile .prose p{margin-bottom:28px}
+.profile .date{font-size:15px;line-height:1.85}
+.profile .timeline h3,.profile .card h3{font-size:21px;line-height:1.6}
+.profile .localNav{font-size:14px;line-height:1.7}
+.profile :global(.kicker){font-size:12px;line-height:1.8}
+@media(max-width:700px){.hero h1 .chineseName{font-size:clamp(44px,12vw,52px)}.hero h1 .englishName{font-size:28px}.hero .motto{font-size:20px}.profile :is(.prose p,.duties,.card p,.role,.intro),.profile :global(.body-copy){font-size:16.5px;line-height:1.95}.profile .localNav{font-size:13px;gap:16px 22px}.profile .date{font-size:14px}.profile .identity a{font-size:16px}.profile .timeline h3,.profile .card h3{font-size:20px}}
