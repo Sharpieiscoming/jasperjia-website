@@ -1,3 +1,3 @@
-import {SitePage} from '../site-pages';
+import Lab from './lab';
 export const metadata={title:'AI Lab | Jasper Jia'};
-export default function Page(){return <SitePage kind="ai-lab"/>}
+export default function Page(){return <Lab/>}
