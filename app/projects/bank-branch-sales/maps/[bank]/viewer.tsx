@@ -1,0 +1,4 @@
+'use client';
+import Link from 'next/link';
+import {useLanguage} from '../../../../site-shell';
+export default function MapViewer({bank,addressSearchConfigured}:{bank:string;addressSearchConfigured:boolean}){const {lang}=useLanguage();return <main id="main"><div style={{padding:'12px 6%',fontSize:13}}><Link href="/projects/bank-branch-sales">← {lang==='zh'?'返回项目':'Back to project'}</Link>{!addressSearchConfigured&&<p style={{margin:'8px 0 0',color:'var(--muted)'}}>{lang==='zh'?'外部地址搜索待配置，网点搜索、筛选与详情可正常使用。':'External address search awaits configuration. Branch search, filters, and details remain available.'}</p>}</div><iframe title={bank==='boc'?'中国银行深圳分行':'平安银行深圳分行'} src={'/api/bank-maps/'+bank} style={{display:'block',width:'100%',height:'calc(100dvh - 135px)',minHeight:450,border:0}} sandbox="allow-scripts allow-same-origin"/></main>}

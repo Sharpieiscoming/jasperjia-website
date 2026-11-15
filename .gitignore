@@ -12,3 +12,6 @@ out/
 Thumbs.db
 *.tsbuildinfo
 .vercel/
+private-maps/
+bank-map-private.json
+*网点分布系统*.html

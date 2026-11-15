@@ -1,6 +1,7 @@
 export type Bilingual = {zh:string;en:string};
 export const projects: {slug:string;title:Bilingual;category:string;summary:Bilingual;published?:boolean}[] = [
  {slug:'building-with-ai',published:true,title:{zh:'我是如何用 AI 搭建个人网站的',en:'How I Built My Website with AI'},category:'Personal Project / AI Experiment',summary:{zh:'从 ¥15 域名和两个 ChatGPT 窗口出发，将想法变成上线的个人网站。',en:'From a ¥15 domain and two ChatGPT windows to a live personal website.'}},
+ {slug:'bank-branch-sales',published:true,title:{zh:'银行渠道销售地图',en:'Bank Branch Sales Visualization'},category:'Data Visualization',summary:{zh:'中国银行与平安银行深圳网点交互地图，支持内置搜索、筛选与网点详情。',en:'Interactive Shenzhen branch maps for Bank of China and Ping An Bank, with built-in search, filters, and details.'}},
  {slug:'market-workspace',title:{zh:'市场研究工作台',en:'Market Research Workspace'},category:'Finance · AI',summary:{zh:'探索市场信息、研究笔记与 AI 摘要的整合方式。',en:'Exploring a connected workflow for market information, notes, and AI summaries.'}},
  {slug:'fund-knowledge-base',title:{zh:'私募研究知识库',en:'Private Fund Knowledge Base'},category:'Research · Data',summary:{zh:'探索结构化客户画像与研究资料的组织方式。',en:'Exploring how to organize structured client profiles and research.'}},
  {slug:'digital-garden',title:{zh:'我的数字花园',en:'A Personal Digital Garden'},category:'Next.js · Tailwind',summary:{zh:'以个人网站为起点，记录金融、技术与成长。',en:'A personal website for documenting finance, technology, and growth.'}}
