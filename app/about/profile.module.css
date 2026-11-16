@@ -44,3 +44,11 @@
 @media(max-width:700px){.hero .calligraphy{font-size:22px;letter-spacing:.09em}}
 
 .profile .hero{padding-top:16px}
+
+/* Sticky chapter navigation stays below the site header, in normal document flow. */
+.profile .localNav{position:sticky;top:var(--header-height,88px);left:auto;right:auto;z-index:15;display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:12px;padding:10px 0;overflow-x:auto;overscroll-behavior-x:contain;background:#090b12f5;border-block:1px solid var(--line);backdrop-filter:blur(16px);scrollbar-width:thin}
+.localNav a{flex:0 0 auto;white-space:nowrap;padding:9px 12px;border-radius:5px;transition:background .2s,color .2s}
+.profile .localNav a[aria-current=location]{color:#e0d6ff;background:#a399ff24;box-shadow:inset 0 -2px #a399ff}
+:global(html[data-theme=light]) .profile .localNav{background:#f8f8fcf5;border-color:#ded9e8}
+:global(html[data-theme=light]) .profile .localNav a[aria-current=location]{color:#68459b;background:#8863b51a;box-shadow:inset 0 -2px #8863b5}
+@media(max-width:700px){.profile .localNav{top:var(--header-height,70px);gap:6px;font-size:13px;padding-block:8px}.localNav a{padding:9px 11px}}

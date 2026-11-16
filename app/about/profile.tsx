@@ -1,4 +1,5 @@
 'use client';
+import {useEffect,useRef,useState} from 'react';
 import {useLanguage} from '../site-shell';
 import {education,experience,skills,beyond} from './profile-data';
 import styles from './profile.module.css';
@@ -9,12 +10,37 @@ const signature=localFont({src:'../../public/fonts/jasper-signature.woff2',weigh
 const mottoFont=localFont({src:'../../public/fonts/jasper-motto.woff2',weight:'400',style:'normal',display:'swap',preload:true,adjustFontFallback:false,fallback:['STXingkai','Xingkai SC','Kaiti TC','DFKai-SB','KaiTi','serif']});
 
 export default function AboutProfile(){
+ const navRef=useRef<HTMLElement>(null);
+ const [active,setActive]=useState('story');
+ useEffect(()=>{
+  const nav=navRef.current;const header=document.querySelector('body > header')||document.querySelector('header');
+  if(!nav||!header)return;
+  const nodes=['story','education','experience','skills','beyond'].map(id=>document.getElementById(id)).filter((node):node is HTMLElement=>!!node);
+  let observer:IntersectionObserver|undefined;let frame=0;let cutoff=0;
+  const update=()=>{
+   frame=0;let current=nodes[0]?.id;
+   for(const node of nodes){if(node.getBoundingClientRect().top<=cutoff+2)current=node.id;}
+   if(window.scrollY+window.innerHeight>=document.documentElement.scrollHeight-2)current=nodes.at(-1)?.id;
+   if(current)setActive(current);
+  };
+  const schedule=()=>{if(!frame)frame=requestAnimationFrame(update)};
+  const measure=()=>{
+   const height=header.getBoundingClientRect().height;cutoff=height+nav.getBoundingClientRect().height+12;
+   nav.style.setProperty('--header-height',height+'px');
+   const padding=parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop)||0;
+   nodes.forEach(node=>{node.style.scrollMarginTop=Math.max(0,cutoff-padding)+'px'});
+   observer?.disconnect();observer=new IntersectionObserver(schedule,{rootMargin:`-${cutoff}px 0px 0px 0px`,threshold:[0,1]});nodes.forEach(node=>observer?.observe(node));schedule();
+  };
+  const resize=new ResizeObserver(measure);resize.observe(header);resize.observe(nav);measure();
+  window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',measure);
+  return()=>{observer?.disconnect();resize.disconnect();cancelAnimationFrame(frame);window.removeEventListener('scroll',schedule);window.removeEventListener('resize',measure);nodes.forEach(node=>node.style.removeProperty('scroll-margin-top'))};
+ },[]);
  const {lang}=useLanguage();const text=(zh:string,en:string)=>lang==='zh'?zh:en;
  const sections=[['story','My Story',text('我的故事','My story')],['education','Education',text('教育背景','Education')],['experience','Experience',text('实习经历','Experience')],['skills','Skills',text('能力与工具','Skills & tools')],['beyond','Beyond Work',text('工作之外','Beyond work')]];
  return <main id="main" className={styles.profile}>
  <section className={`section ${heading.header}`}><p className={heading.label}>ABOUT</p><h2 className={heading.title}>{text('关于我','About Me')}</h2></section>
  <section className={`section ${styles.hero}`}><div><h1 className={styles.names} data-language={lang}><span lang="zh-Hant" className={`${signature.className} ${styles.chineseName}`}>賈駿</span><span className={styles.englishName}>Jasper Jia</span></h1><p lang={lang==='zh'?'zh-Hant':'en'} className={lang==='zh'?`${styles.motto} ${styles.calligraphy} ${mottoFont.className}`:styles.motto}>{text('明道若昧，進道若退','The way forward may seem unclear; progress may feel like retreat.')}</p><p className={styles.location}>Shenzhen, China</p><aside id="connect" className={styles.identity}><span className="kicker">LET’S CONNECT</span><a href="mailto:jiajun_working@163.com">jiajun_working@163.com ↗</a><a href="https://github.com/Sharpieiscoming" target="_blank" rel="noopener noreferrer">GitHub / Sharpieiscoming ↗</a></aside></div><FinanceOrbit/></section>
- <nav className={`section ${styles.localNav}`} aria-label={text('关于页目录','About page contents')}>{sections.map(([id,label])=><a href={'#'+id} key={id}>{label}</a>)}</nav>
+ <nav ref={navRef} className={`section ${styles.localNav}`} aria-label={text('关于页目录','About page contents')}>{sections.map(([id,label])=><a href={'#'+id} key={id} aria-current={active===id?'location':undefined}>{label}</a>)}</nav>
  <section id="story" className={`section ${styles.story}`}><div><p className="kicker">01 / MY STORY</p><h2>{text('从课堂里的问题，到工作中的问题。','From questions in class to questions at work.')}</h2></div><div className={styles.prose}>
  <p>{text('我的学习经历从应试教育开始。进入大学后，学习的范围逐渐从课程和考试，延伸到经济、市场以及未来可能从事的工作。本科读经济学，硕士继续学习金融，是这段探索的一部分。','My education began in an exam-oriented system. At university, learning gradually extended beyond courses and exams to economics, markets, and possible careers. Studying economics as an undergraduate and then finance at master’s level has been part of that exploration.')}</p>
  <p>{text('几段实习让我接触了研究、基金渠道和机构业务。做研究需要把资料和逻辑理清楚，做渠道和机构服务则需要理解对方在问什么。这些经历还不能替我给出职业选择的最终答案，但让我的问题变得更具体。','Internships have introduced me to research, fund distribution, and institutional business. Research calls for organizing evidence and reasoning; channel and institutional work calls for understanding what others are asking. These experiences have not settled every career question, but they have made those questions more concrete.')}</p>
