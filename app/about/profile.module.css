@@ -42,3 +42,5 @@
 .hero .calligraphy{font-size:28px;line-height:1.85;letter-spacing:.12em;font-weight:400;font-style:normal;font-synthesis:none;color:#e8dfcf}
 :global(html[data-theme=light]) .hero .calligraphy{color:#302c28}
 @media(max-width:700px){.hero .calligraphy{font-size:22px;letter-spacing:.09em}}
+
+.profile .hero{padding-top:16px}

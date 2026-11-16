@@ -2,6 +2,7 @@
 import {useLanguage} from '../site-shell';
 import {education,experience,skills,beyond} from './profile-data';
 import styles from './profile.module.css';
+import heading from '../page-heading.module.css';
 import FinanceOrbit from '../finance-orbit';
 import localFont from 'next/font/local';
 const signature=localFont({src:'../../public/fonts/jasper-signature.woff2',weight:'400',style:'normal',display:'swap',preload:true,adjustFontFallback:false});
@@ -11,6 +12,7 @@ export default function AboutProfile(){
  const {lang}=useLanguage();const text=(zh:string,en:string)=>lang==='zh'?zh:en;
  const sections=[['story','My Story',text('我的故事','My story')],['education','Education',text('教育背景','Education')],['experience','Experience',text('实习经历','Experience')],['skills','Skills',text('能力与工具','Skills & tools')],['beyond','Beyond Work',text('工作之外','Beyond work')]];
  return <main id="main" className={styles.profile}>
+ <section className={`section ${heading.header}`}><p className={heading.label}>ABOUT</p><h2 className={heading.title}>{text('关于我','About Me')}</h2></section>
  <section className={`section ${styles.hero}`}><div><p className="kicker">ABOUT / FINANCE × AI EXPLORER</p><h1 className={styles.names} data-language={lang}><span lang="zh-Hant" className={`${signature.className} ${styles.chineseName}`}>賈駿</span><span className={styles.englishName}>Jasper Jia</span></h1><p lang={lang==='zh'?'zh-Hant':'en'} className={lang==='zh'?`${styles.motto} ${styles.calligraphy} ${mottoFont.className}`:styles.motto}>{text('明道若昧，進道若退','The way forward may seem unclear; progress may feel like retreat.')}</p><p className={styles.location}>Shenzhen, China</p><aside id="connect" className={styles.identity}><span className="kicker">LET’S CONNECT</span><a href="mailto:jiajun_working@163.com">jiajun_working@163.com ↗</a><a href="https://github.com/Sharpieiscoming" target="_blank" rel="noopener noreferrer">GitHub / Sharpieiscoming ↗</a></aside></div><FinanceOrbit/></section>
  <nav className={`section ${styles.localNav}`} aria-label={text('关于页目录','About page contents')}>{sections.map(([id,label])=><a href={'#'+id} key={id}>{label}</a>)}</nav>
  <section id="story" className={`section ${styles.story}`}><div><p className="kicker">01 / MY STORY</p><h2>{text('从课堂里的问题，到工作中的问题。','From questions in class to questions at work.')}</h2></div><div className={styles.prose}>

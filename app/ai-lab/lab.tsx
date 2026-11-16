@@ -1,13 +1,15 @@
 'use client';
 import {useLanguage} from '../site-shell';
+import heading from '../page-heading.module.css';
 import styles from './lab.module.css';
 
 export default function Lab(){
  const {lang}=useLanguage();const zh=lang==='zh';
  return <main id="main" className={styles.page}>
- <section className={`section ${styles.intro}`}>
- <p className="kicker">AI LAB / PERSONAL EXPERIMENTS</p>
- <h1>{zh?'实验仍在继续。':'A Space for Experiments.'}</h1>
+ <section className={`section ${styles.intro} ${heading.header}`}>
+ <p className={heading.label}>AI LAB / PERSONAL EXPERIMENTS</p>
+ <h1 className={heading.title}>{zh?'实验室':'AI Lab'}</h1>
+ <p className={styles.tagline}>{zh?'实验仍在继续。':'A Space for Experiments.'}</p>
  <p>{zh?'这里会陆续记录一些我用 AI 做的小工具、实验和不成熟的想法。目前还没有正式开放的工具。':'This is where I’ll share small tools, experiments, and unfinished ideas I explore with AI. No tools are publicly available yet.'}</p>
  </section>
  <section className={`section ${styles.preview}`} aria-labelledby="coming-soon-title">

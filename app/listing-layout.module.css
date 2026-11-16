@@ -1,5 +1,5 @@
 /* Applied only to the Projects and Writing indexes, never to detail pages. */
-.listing .heading{padding-top:40px;padding-bottom:22px}
-.listing .heading h1{font-size:32px;font-weight:500;line-height:1.35;letter-spacing:-.5px;margin:0}
+.listing .heading{padding-top:36px;padding-bottom:20px}
+
 .listing>section+section{padding-top:28px}
-@media(max-width:700px){.listing .heading{padding-top:30px;padding-bottom:18px}.listing .heading h1{font-size:28px}.listing>section+section{padding-top:22px}}
+@media(max-width:700px){.listing .heading{padding-top:28px;padding-bottom:16px}.listing>section+section{padding-top:22px}}
