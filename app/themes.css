@@ -70,3 +70,6 @@ html[data-theme=light] .orbit-label{background:#fffffff0;border-color:#ded5ea;co
 html[data-theme=light] .orbit-label span{color:#8062a6}
 html[data-theme=light] :is(.coord,.star){color:#7a668e}
 @media(max-width:700px){html[data-theme=light] header nav{background:#f8f9fc}.header-tools{gap:14px}}
+
+/* Compact navigation wordmark; existing narrow-screen wordmark hiding is preserved. */
+header .brand-name{line-height:1.3}header .brand-name>span{display:block}header .brand-subtitle{font-size:8px;font-weight:400;letter-spacing:1.4px;line-height:1.4;margin-top:4px;color:#9992ad}html[data-theme=light] header .brand-subtitle{color:#797087}@media(max-width:700px){header .brand-subtitle{display:none}}
